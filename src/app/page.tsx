@@ -11,7 +11,9 @@ export default function Home() {
         ยังผลให้มีการกระทำอันป่าเถื่อน
       </p>
       <div>
-        <Button color="primary">Click me</Button>
+        <Button color="primary" variant="shadow">
+          Click me
+        </Button>
         <Spinner />
         <RadioGroup label="Select your favorite city">
           <Radio value="buenos-aires">Buenos Aires</Radio>
