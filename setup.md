@@ -35,14 +35,15 @@ npx create-next-app@latest --ts --use-pnpm ubp.webapp
 
 **Install tailwind css**
 
-````bash
+```bash
 pnpm add tailwindcss@latest postcss@latest autoprefixer@latest
+```
 
 **Install NextUI**
 
 ```bash
 pnpm add @nextui-org/react @nextui-org/styles
-````
+```
 
 **Install React Hook Form**
 
