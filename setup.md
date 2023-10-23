@@ -20,7 +20,12 @@ Web application for **UBP**.
 - [NextUI](https://nextui.org/) - UI library for Next.js.
 - [TailwindCSS](https://tailwindcss.com/) - CSS framework.
 - [React Hook Form](https://react-hook-form.com/) - Form validation.
-- [React Query](https://tanstack.com/query/v3/) - Data fetching. **OR** [SWR](https://swr.vercel.app/) - Data fetching.
+- [SWR](https://swr.vercel.app/) - Data fetching. **OR** [SWR](https://swr.vercel.app/)
+- Data fetching.
+
+> **Note**
+> React Query and SWR are both great libraries for data fetching. But React Query is more powerful and has more features. So, I think we should use fetch to get data from API for simple case.
+
 - [Zustand](https://zustand-demo.pmnd.rs/) - State management.
 - [Framer Motion](https://www.framer.com/motion/) - Animation.
 
