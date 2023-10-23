@@ -4,6 +4,8 @@ Web application for **UBP**.
 
 ## Tech Stack
 
+**_Package manager: [pnpm](https://pnpm.io/)_**
+
 ### Tools:
 
 - [Next.js](https://nextjs.org/) (React) - Fullstack framework for React and Node.js (SSR) applications. Create frontend and backend with one.
@@ -20,6 +22,7 @@ Web application for **UBP**.
 - [React Hook Form](https://react-hook-form.com/) - Form validation.
 - [React Query](https://tanstack.com/query/v3/) - Data fetching. **OR** [SWR](https://swr.vercel.app/) - Data fetching.
 - [Zustand](https://zustand-demo.pmnd.rs/) - State management.
+- [Framer Motion](https://www.framer.com/motion/) - Animation.
 
 ### Font and Icon:
 

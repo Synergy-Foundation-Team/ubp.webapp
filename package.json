@@ -3,12 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 3333",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
+    "@nextui-org/react": "^2.1.13",
+    "@types/next": "^9.0.0",
+    "framer-motion": "^10.16.4",
     "next": "13.5.6",
     "react": "^18",
     "react-dom": "^18"
