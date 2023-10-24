@@ -4,6 +4,8 @@ Web application for **UBP**.
 
 ## Tech Stack
 
+**_Package manager: [pnpm](https://pnpm.io/)_**
+
 ### Tools:
 
 - [Next.js](https://nextjs.org/) (React) - Fullstack framework for React and Node.js (SSR) applications. Create frontend and backend with one.
@@ -18,8 +20,14 @@ Web application for **UBP**.
 - [NextUI](https://nextui.org/) - UI library for Next.js.
 - [TailwindCSS](https://tailwindcss.com/) - CSS framework.
 - [React Hook Form](https://react-hook-form.com/) - Form validation.
-- [React Query](https://tanstack.com/query/v3/) - Data fetching. **OR** [SWR](https://swr.vercel.app/) - Data fetching.
+- [SWR](https://swr.vercel.app/) - Data fetching. **OR** [SWR](https://swr.vercel.app/)
+- Data fetching.
+
+> **Note**
+> React Query and SWR are both great libraries for data fetching. But React Query is more powerful and has more features. So, I think we should use fetch to get data from API for simple case.
+
 - [Zustand](https://zustand-demo.pmnd.rs/) - State management.
+- [Framer Motion](https://www.framer.com/motion/) - Animation.
 
 ### Font and Icon:
 
@@ -35,14 +43,15 @@ npx create-next-app@latest --ts --use-pnpm ubp.webapp
 
 **Install tailwind css**
 
-````bash
+```bash
 pnpm add tailwindcss@latest postcss@latest autoprefixer@latest
+```
 
 **Install NextUI**
 
 ```bash
 pnpm add @nextui-org/react @nextui-org/styles
-````
+```
 
 **Install React Hook Form**
 
