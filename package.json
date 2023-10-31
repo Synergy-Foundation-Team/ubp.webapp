@@ -13,6 +13,7 @@
     "@nextui-org/react": "^2.1.13",
     "@types/next": "^9.0.0",
     "axios": "^1.6.0",
+    "firebase-admin": "^11.11.0",
     "framer-motion": "^10.16.4",
     "next": "14.0.0",
     "next-auth": "^4.24.3",
