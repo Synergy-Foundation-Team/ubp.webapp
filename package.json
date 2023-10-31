@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "version:patch": "pnpm version patch",
-    "dev": "next dev -p 3333",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
