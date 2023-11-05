@@ -3,11 +3,14 @@
 import ButtonUI from "@/ui/ButtonUI";
 import CardUI from "@/ui/CardUI";
 import InputFieldUI from "@/ui/InputFieldUI";
-import React from "react";
+import React, { useState } from "react";
+import { LuLogIn, LuEye, LuEyeOff } from "react-icons/lu";
 
-type Props = {};
 
 export default function LoginPage() {
+  const [isVisible, setIsVisible] = useState(false);
+
+  const toggleVisibility = () => setIsVisible(!isVisible);
   return (
     <div className="flex flex-col w-full h-screen justify-center items-center ">
       <CardUI
@@ -23,12 +26,33 @@ export default function LoginPage() {
           </div>
 
           <div className="">
-            <InputFieldUI type="password" label="password" />
+            <InputFieldUI
+              label="password"
+              endContent={
+                <button
+                  className="focus:outline-none"
+                  type="button"
+                  onClick={toggleVisibility}
+                >
+                  {isVisible ? (
+                    <LuEyeOff className="text-2xl text-default-400 pointer-events-none" />
+                  ) : (
+                    <LuEye className="text-2xl text-default-400 pointer-events-none" />
+                  )}
+                </button>
+              }
+              type={isVisible ? "text" : "password"}
+            />
           </div>
         </div>
 
         <div className="input_button my-6">
-          <ButtonUI color="primary" size="lg" fullWidth>
+          <ButtonUI
+            color="primary"
+            size="lg"
+            fullWidth
+            startContent={<LuLogIn />}
+          >
             Login
           </ButtonUI>
         </div>
