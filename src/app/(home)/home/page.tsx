@@ -23,7 +23,7 @@ export default function HomePage() {
           console.log("username", username);
         }}
       >
-        Get local
+        Get local Naja testtest
       </ButtonUI>
     </div>
   );
