@@ -23,7 +23,6 @@ export default function RootLayout({ children }: Readonly<Props>) {
     <html suppressHydrationWarning lang="en" className="light">
       <body className={sarabun.className}>
         <Providers>
-          <NavbarUI />
           {children}
         </Providers>
       </body>

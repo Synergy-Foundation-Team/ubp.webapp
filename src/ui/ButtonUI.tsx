@@ -18,7 +18,7 @@ type Props = {
     | `success`
     | `warning`
     | `danger`;
-  size: `sm` | `md` | `lg`;
+  size?: `sm` | `md` | `lg`;
   radius?: `none` | `sm` | `md` | `lg` | `full`;
   spinnerPlacement?: `start` | `end`;
   fullWidth?: boolean;
