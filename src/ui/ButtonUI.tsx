@@ -27,6 +27,8 @@ type Props = {
   isLoading?: boolean;
   disableRipple?: boolean;
   disableAnimation?: boolean;
+  onClick?: () => void;
+  onPress?: () => void;
 };
 
 export default function ButtonUI({
@@ -42,7 +44,9 @@ export default function ButtonUI({
   isLoading,
   disableRipple,
   disableAnimation,
-}: Props) {
+  onClick,
+  onPress,
+}: Readonly<Props>) {
   return (
     <Button
       variant={variant}
@@ -56,6 +60,8 @@ export default function ButtonUI({
       isLoading={isLoading}
       disableRipple={disableRipple}
       disableAnimation={disableAnimation}
+      onClick={onClick}
+      onPress={onPress}
     >
       {children}
     </Button>
