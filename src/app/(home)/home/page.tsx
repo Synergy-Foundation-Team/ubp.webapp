@@ -1,20 +1,17 @@
 "use client";
+
 import React, { useEffect } from "react";
-import useLocalStorage from "@/hooks/useLocalStorage";
 import ButtonUI from "@/ui/ButtonUI";
+import LocalStorageUtil from "@/utils/localStorageUtil";
 
 export default function HomePage() {
-  const useLocal = useLocalStorage("key", "value");
-  const useLocalAuth = useLocalStorage("auth", "false");
-
   useEffect(() => {}, []);
   return (
     <div>
       <ButtonUI
         size="md"
         onClick={() => {
-          useLocal.setItem("Test");
-          useLocalAuth.setItem("true");
+          LocalStorageUtil.set("username", "john_doe");
         }}
       >
         Set local
@@ -22,9 +19,8 @@ export default function HomePage() {
       <ButtonUI
         size="md"
         onClick={() => {
-          const getlocal = useLocal.getItem();
-          console.log(getlocal);
-          console.log(useLocalAuth.getItem());
+          const username = LocalStorageUtil.get<string>("username");
+          console.log("username", username);
         }}
       >
         Get local
