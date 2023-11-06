@@ -3,21 +3,38 @@
 import ButtonUI from "@/ui/ButtonUI";
 import CardUI from "@/ui/CardUI";
 import InputFieldUI from "@/ui/InputFieldUI";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { LuLogIn, LuEye, LuEyeOff } from "react-icons/lu";
-
+import Link from "next/link";
+import Image from "next/image";
 
 export default function LoginPage() {
   const [isVisible, setIsVisible] = useState(false);
+  const [fadeIn, setFadeIn] = useState(false);
 
   const toggleVisibility = () => setIsVisible(!isVisible);
+
+  useEffect(() => {
+    setFadeIn(true);
+  }, []);
+
+  const containerClassNames = `flex flex-col w-full h-screen justify-center items-center ${fadeIn ? 'fade-in' : ''}`;
+
   return (
-    <div className="flex flex-col w-full h-screen justify-center items-center ">
+    <div className={containerClassNames}>
       <CardUI
-        classNames={"mx-10 w-[80%] md:w-[40%] lg:w-[40%]"}
+        classNames={"mx-10 w-[80%] md:w-[70%] lg:w-[50%]"}
         bodyClassName="flex flex-col flex-wrap gap-y-8"
       >
-        <h1 className="text-2xl md:text-4xl font-semibold text-center my-4">
+        <div className="flex justify-center">
+          <Image
+            src="/assets/UBP_LOGO.svg"
+            alt="Picture of the author"
+            width={400}
+            height={400}
+          ></Image>
+        </div>
+        <h1 className="text-xl md:text-2xl lg:text-4xl font-semibold text-center mb-4">
           ระบบติดตามการหมักก๊าซ UBP
         </h1>
         <div className="grid gap-y-4">
@@ -47,14 +64,16 @@ export default function LoginPage() {
         </div>
 
         <div className="input_button my-6">
-          <ButtonUI
-            color="primary"
-            size="lg"
-            fullWidth
-            startContent={<LuLogIn />}
-          >
-            Login
-          </ButtonUI>
+          <Link href="/dashboard">
+            <ButtonUI
+              color="primary"
+              size="lg"
+              fullWidth
+              startContent={<LuLogIn />}
+            >
+              Login
+            </ButtonUI>
+          </Link>
         </div>
       </CardUI>
     </div>
