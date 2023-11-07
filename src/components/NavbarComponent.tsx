@@ -4,6 +4,7 @@ import React from "react";
 import { Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Button } from "@nextui-org/react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { LuLogIn } from "react-icons/lu";
 
 const NavbarUI: React.FC = () => {
   const router = useRouter();
@@ -20,7 +21,7 @@ const NavbarUI: React.FC = () => {
       </NavbarBrand>
       <NavbarContent justify="end">
         <NavbarItem>
-          <Button as={Link} color="primary" href="#" variant="flat" onClick={handleLogin}>
+          <Button as={Link} color="primary" href="#" variant="flat" onClick={handleLogin} startContent={<LuLogIn />}>
             Login
           </Button>
         </NavbarItem>

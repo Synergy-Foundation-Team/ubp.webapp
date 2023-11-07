@@ -1,4 +1,4 @@
-import NavbarUI from '@/ui/NavbarUI';
+import NavbarUI from '@/components/NavbarComponent';
 import React from 'react';
 
 interface Props {
@@ -7,9 +7,9 @@ interface Props {
 
 export default function DashboardLayout({ children }: Readonly<Props>) {
     return (
-       <div>
-        <NavbarUI />
-           {children}
-       </div>  
+        <div>
+            <NavbarUI />
+            {children}
+        </div>
     );
 }
