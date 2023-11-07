@@ -4,20 +4,20 @@ import { Button } from "@nextui-org/react";
 type Props = {
   children?: React.ReactNode;
   variant?:
-    | `solid`
-    | `bordered`
-    | `light`
-    | `flat`
-    | `faded`
-    | `shadow`
-    | `ghost`;
+  | `solid`
+  | `bordered`
+  | `light`
+  | `flat`
+  | `faded`
+  | `shadow`
+  | `ghost`;
   color?:
-    | `default`
-    | `primary`
-    | `secondary`
-    | `success`
-    | `warning`
-    | `danger`;
+  | `default`
+  | `primary`
+  | `secondary`
+  | `success`
+  | `warning`
+  | `danger`;
   size?: `sm` | `md` | `lg`;
   radius?: `none` | `sm` | `md` | `lg` | `full`;
   spinnerPlacement?: `start` | `end`;

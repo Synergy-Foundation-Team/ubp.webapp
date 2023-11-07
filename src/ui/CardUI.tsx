@@ -33,7 +33,7 @@ export default function CardUI({
   footer,
   classNames,
   bodyClassName,
-}: Props) {
+}: Readonly<Props>) {
   return (
     <Card className={classNames}>
       {header && <CardHeader>{header}</CardHeader>}

@@ -5,14 +5,24 @@ import CardUI from "@/ui/CardUI";
 import InputFieldUI from "@/ui/InputFieldUI";
 import React, { useState, useEffect } from "react";
 import { LuLogIn, LuEye, LuEyeOff } from "react-icons/lu";
-import Link from "next/link";
+import { useRouter } from "next/navigation"
 import Image from "next/image";
 
 export default function LoginPage() {
   const [isVisible, setIsVisible] = useState(false);
   const [fadeIn, setFadeIn] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const router = useRouter();
 
   const toggleVisibility = () => setIsVisible(!isVisible);
+
+  const handleLogin = () => {
+    setLoading(true)
+    setTimeout(() => {
+      setLoading(false)
+      router.push('/dashboard')
+    }, 2000);
+  }
 
   useEffect(() => {
     setFadeIn(true);
@@ -64,16 +74,16 @@ export default function LoginPage() {
         </div>
 
         <div className="input_button my-6">
-          <Link href="/dashboard">
             <ButtonUI
               color="primary"
               size="lg"
               fullWidth
-              startContent={<LuLogIn />}
+              isLoading={loading}
+              startContent={loading  ? null : <LuLogIn />}
+              onClick={handleLogin}
             >
               Login
             </ButtonUI>
-          </Link>
         </div>
       </CardUI>
     </div>

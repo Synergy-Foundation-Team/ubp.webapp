@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Sarabun } from "next/font/google";
 import { Providers } from "@/app/providers";
 import "./globals.css";
-import NavbarUI from "../ui/NavbarUI";
 
 const sarabun = Sarabun({
   subsets: ["latin", "latin-ext", "thai"],
