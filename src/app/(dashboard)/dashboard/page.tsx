@@ -1,8 +1,10 @@
-"use client"
+"use client";
 
 import CardUI from "@/ui/CardUI";
 import React from "react";
-import { cardItems } from "@/constants"
+import { cardItems } from "@/constants";
+import router from "next/router";
+import Link from "next/link";
 
 export default function DashboardPage() {
   return (
@@ -13,10 +15,18 @@ export default function DashboardPage() {
       <div className="flex flex-wrap justify-center gap-2">
         {cardItems.map((item) => (
           <div key={item.id} className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-2">
-            <CardUI fullWidth classNames="w-full h-auto bg-white hover:shadow-xl transition-shadow duration-300" bodyClassName="p-6 flex flex-col items-center justify-center">
-              <div className="text-6xl mb-4">{item.icon}</div>
-              <div className="text-center text-xl font-semibold text-gray-800">{item.text}</div>
-            </CardUI>
+            <Link href={item.path}>
+              <CardUI
+                fullWidth
+                classNames="w-full h-auto bg-white hover:shadow-xl transition-shadow duration-300"
+                bodyClassName="p-6 flex flex-col items-center justify-center"
+              >
+                <div className="text-6xl mb-4">{item.icon}</div>
+                <div className="text-center text-xl font-semibold text-gray-800">
+                  {item.text}
+                </div>
+              </CardUI>
+            </Link>
           </div>
         ))}
       </div>
