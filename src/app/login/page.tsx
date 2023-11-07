@@ -1,7 +1,9 @@
+import LoginComponent from "@/components/LoginComponent";
 import React from "react";
 
-type Props = {};
+export default function LoginPage() {
 
-export default function page({}: Props) {
-  return <div>Login Page</div>;
+  return (
+    <LoginComponent />
+  );
 }

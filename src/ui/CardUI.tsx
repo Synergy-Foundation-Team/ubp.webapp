@@ -9,6 +9,7 @@ import {
 
 type Props = {
   classNames?: string;
+  bodyClassName?: string;
   header?: React.ReactNode;
   children?: React.ReactNode;
   footer?: React.ReactNode;
@@ -16,14 +17,14 @@ type Props = {
   radius?: "none" | "sm" | "md" | "lg";
   fullWidth?: boolean;
   isHoverable?: boolean;
-  isPressable: boolean;
-  isFooterBlurred: boolean;
+  isPressable?: boolean;
+  isFooterBlurred?: boolean;
   allowTextSelectionOnPress?: boolean;
   onPress?: () => void;
-  onPressChange: (isPressed: boolean) => void;
-  onPressUp: (e: any) => void;
-  onPressEnd: (e: any) => void;
-  onPressStart: (e: any) => void;
+  onPressChange?: (isPressed: boolean) => void;
+  onPressUp?: (e: any) => void;
+  onPressEnd?: (e: any) => void;
+  onPressStart?: (e: any) => void;
 };
 
 export default function CardUI({
@@ -31,11 +32,12 @@ export default function CardUI({
   children,
   footer,
   classNames,
-}: Props) {
+  bodyClassName,
+}: Readonly<Props>) {
   return (
     <Card className={classNames}>
       {header && <CardHeader>{header}</CardHeader>}
-      <CardBody>{children}</CardBody>
+      <CardBody className={bodyClassName}>{children}</CardBody>
       {footer && <CardFooter>{footer}</CardFooter>}
     </Card>
   );
