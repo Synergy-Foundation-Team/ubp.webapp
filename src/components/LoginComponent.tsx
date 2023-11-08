@@ -28,8 +28,6 @@ export default function LoginComponent({ callbackUrl, error }: Props) {
     const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         setLoading(true)
-        console.log("test", email, password);
-
         setTimeout(async () => {
             await signIn('credentials', {
                 email: email,
@@ -63,7 +61,8 @@ export default function LoginComponent({ callbackUrl, error }: Props) {
                 <h1 className="text-xl md:text-2xl lg:text-4xl font-semibold text-center mb-4">
                     ระบบติดตามการหมักก๊าซ UBP
                 </h1>
-                {!!error && "authentication failed"}
+                {!!error && <div className="text-red-500">{error}</div>}
+                {error}
                 <form onSubmit={onSubmit}>
                     <div className="grid gap-y-4">
                         <div className="">

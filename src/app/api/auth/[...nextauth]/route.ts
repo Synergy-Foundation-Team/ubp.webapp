@@ -33,6 +33,7 @@ interface User {
 }
 
 export const authOptions: NextAuthOptions = {
+  secret: process.env.AUTH_SECRET,
   providers: [
     CredentialsProvider({
         name: "Credentials",
@@ -49,7 +50,6 @@ export const authOptions: NextAuthOptions = {
                     user.password === credentials?.password
             );
 
-            console.log(user)
             if (user) {
                 return {
                     id: user.id.toString(),
@@ -64,8 +64,8 @@ export const authOptions: NextAuthOptions = {
         }),
   ],
   pages: {
-    signIn: "/login",
-    error: "/login",
+    signIn: "/signIn",
+    error: "/signIn",
   }
 };
 
