@@ -21,9 +21,7 @@ export default function RootLayout({ children }: Readonly<Props>) {
   return (
     <html suppressHydrationWarning lang="en" className="light">
       <body className={sarabun.className}>
-        <Providers>
-          {children}
-        </Providers>
+        <Providers>{children}</Providers>
       </body>
     </html>
   );

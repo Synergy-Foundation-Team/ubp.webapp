@@ -1,28 +1,12 @@
-"use client";
-import { Button } from "@nextui-org/react";
-import { Spinner } from "@nextui-org/react";
-import { RadioGroup, Radio } from "@nextui-org/react";
+import { getServerSession } from "next-auth";
+import { redirect } from "next/navigation";
 
-export default function Home() {
-  return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <p>
-        การไม่นำพาและการหมิ่นในคุณค่าของสิทธิมนุษยชน
-        ยังผลให้มีการกระทำอันป่าเถื่อน
-      </p>
-      <div>
-        <Button color="primary" variant="shadow">
-          Click me
-        </Button>
-        <Spinner />
-        <RadioGroup label="Select your favorite city">
-          <Radio value="buenos-aires">Buenos Aires</Radio>
-          <Radio value="sydney">Sydney</Radio>
-          <Radio value="san-francisco">San Francisco</Radio>
-          <Radio value="london">London</Radio>
-          <Radio value="tokyo">Tokyo</Radio>
-        </RadioGroup>
-      </div>
-    </main>
-  );
+export default async function Home() {
+  const session = await getServerSession();
+
+  if (!session || !session.user) {
+    redirect("/signIn");
+  } else {
+    redirect("/dashboard");
+  }
 }
