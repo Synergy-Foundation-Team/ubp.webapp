@@ -1,23 +1,14 @@
 FROM node:20-alpine
 
-RUN apk add --no-cache libc6-compat
-RUN npm install -g pnpm
+ENV PNPM_HOME="/pnpm"
+ENV PATH="$PNPM_HOME:$PATH"
+
+RUN corepack enable
 
 WORKDIR /app
 
-COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* ./
+COPY . /app
 
-COPY . .
+RUN pnpm install --frozen-lockfile
 
-RUN \
-  if [ -f yarn.lock ]; then yarn; \
-  elif [ -f package-lock.json ]; then npm install; \
-  elif [ -f pnpm-lock.yaml ]; then yarn global add pnpm && pnpm i; \
-  else echo "Lockfile not found." && exit 1; \
-  fi
-
-COPY . .
-
-EXPOSE 3000
-
-CMD ["pnpm", "run", "dev"]
+CMD ["pnpm", "dev"]

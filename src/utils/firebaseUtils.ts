@@ -16,7 +16,7 @@ export async function readDocument(docRef: DocumentReference) {
   if (doc.exists) {
     return doc.data();
   } else {
-    throw new Error("Document not found");
+    throw new Error("Document not found"); 
   }
 }
 

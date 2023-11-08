@@ -2,23 +2,24 @@ import React from "react";
 import { Button } from "@nextui-org/react";
 
 type Props = {
+  type?: `button` | `submit` | `reset`;
   children?: React.ReactNode;
   variant?:
-    | `solid`
-    | `bordered`
-    | `light`
-    | `flat`
-    | `faded`
-    | `shadow`
-    | `ghost`;
+  | `solid`
+  | `bordered`
+  | `light`
+  | `flat`
+  | `faded`
+  | `shadow`
+  | `ghost`;
   color?:
-    | `default`
-    | `primary`
-    | `secondary`
-    | `success`
-    | `warning`
-    | `danger`;
-  size: `sm` | `md` | `lg`;
+  | `default`
+  | `primary`
+  | `secondary`
+  | `success`
+  | `warning`
+  | `danger`;
+  size?: `sm` | `md` | `lg`;
   radius?: `none` | `sm` | `md` | `lg` | `full`;
   spinnerPlacement?: `start` | `end`;
   fullWidth?: boolean;
@@ -27,9 +28,14 @@ type Props = {
   isLoading?: boolean;
   disableRipple?: boolean;
   disableAnimation?: boolean;
+  startContent?: React.ReactNode;
+  endContent?: React.ReactNode;
+  onClick?: () => void;
+  onPress?: () => void;
 };
 
 export default function ButtonUI({
+  type,
   children,
   variant,
   color,
@@ -42,9 +48,14 @@ export default function ButtonUI({
   isLoading,
   disableRipple,
   disableAnimation,
-}: Props) {
+  startContent,
+  endContent,
+  onClick,
+  onPress,
+}: Readonly<Props>) {
   return (
     <Button
+      type={type}
       variant={variant}
       color={color}
       size={size}
@@ -56,6 +67,10 @@ export default function ButtonUI({
       isLoading={isLoading}
       disableRipple={disableRipple}
       disableAnimation={disableAnimation}
+      onClick={onClick}
+      onPress={onPress}
+      startContent={startContent}
+      endContent={endContent}
     >
       {children}
     </Button>
