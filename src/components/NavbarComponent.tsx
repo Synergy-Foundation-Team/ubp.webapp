@@ -10,7 +10,7 @@ const NavbarUI: React.FC = () => {
   const router = useRouter();
 
   const handleLogin = () => {
-    router.push('/login');
+    router.push('/signIn');
   }
 
   return (
