@@ -2,6 +2,7 @@ import React from "react";
 import { Button } from "@nextui-org/react";
 
 type Props = {
+  type?: `button` | `submit` | `reset`;
   children?: React.ReactNode;
   variant?:
   | `solid`
@@ -34,6 +35,7 @@ type Props = {
 };
 
 export default function ButtonUI({
+  type,
   children,
   variant,
   color,
@@ -53,6 +55,7 @@ export default function ButtonUI({
 }: Readonly<Props>) {
   return (
     <Button
+      type={type}
       variant={variant}
       color={color}
       size={size}

@@ -1,15 +1,15 @@
-import NavbarUI from '@/components/NavbarComponent';
-import React from 'react';
+import NavbarUI from "@/components/NavbarComponent";
+import React from "react";
 
 interface Props {
-    children: React.ReactNode;
+  children: React.ReactNode;
 }
 
-export default function DashboardLayout({ children }: Readonly<Props>) {
-    return (
-        <div>
-            <NavbarUI />
-            {children}
-        </div>
-    );
+export default async function DashboardLayout({ children }: Readonly<Props>) {
+  return (
+    <div>
+      <NavbarUI />
+      {children}
+    </div>
+  );
 }
