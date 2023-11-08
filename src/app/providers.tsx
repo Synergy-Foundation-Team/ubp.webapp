@@ -11,13 +11,17 @@ import { SessionProvider } from "next-auth/react";
 
 const queryClient = new QueryClient();
 
-export function Providers({ children }: { children: React.ReactNode }) {
+export function Providers({
+  children,
+  session,
+}: {
+  children: React.ReactNode;
+  session: any;
+}) {
   return (
     <NextUIProvider>
       <QueryClientProvider client={queryClient}>
-        <SessionProvider>
-          {children}
-        </SessionProvider>
+        <SessionProvider session={session}>{children}</SessionProvider>
         <ReactQueryDevtools initialIsOpen={false} />
       </QueryClientProvider>
     </NextUIProvider>

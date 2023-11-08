@@ -1,5 +1,5 @@
-import type { NextApiRequest, NextApiResponse } from "next"
-import CredentialsProvider from "next-auth/providers/credentials"
+import type { NextApiRequest, NextApiResponse } from "next";
+import CredentialsProvider from "next-auth/providers/credentials";
 import NextAuth, { NextAuthOptions } from "next-auth";
 
 const users = [
@@ -20,57 +20,54 @@ const users = [
 ];
 
 interface RequestInternal {
-    body: Record<string, any>;
-    query: Record<string, any>;
-    headers: Record<string, any>;
-    method: string;
+  body: Record<string, any>;
+  query: Record<string, any>;
+  headers: Record<string, any>;
+  method: string;
 }
 interface User {
-    id: string;
-    name: string;
-    email: string;
-    role: string;
+  id: string;
+  name: string;
+  email: string;
+  role: string;
 }
 
 export const authOptions: NextAuthOptions = {
   secret: process.env.AUTH_SECRET,
   providers: [
     CredentialsProvider({
-        name: "Credentials",
-        credentials: {
-            email: { label: "Email", type: "email", placeholder: "Email" },
-            password: { label: "Password", type: "password" },
-        },
-        async authorize(
-            credentials, req
-        ): Promise<User | null> {
-            const user = users.find(
-                (user) =>
-                    user.email === credentials?.email &&
-                    user.password === credentials?.password
-            );
+      name: "Credentials",
+      credentials: {
+        email: { label: "Email", type: "email", placeholder: "Email" },
+        password: { label: "Password", type: "password" },
+      },
+      async authorize(credentials, req): Promise<User | null> {
+        const user = users.find(
+          (user) =>
+            user.email === credentials?.email &&
+            user.password === credentials?.password
+        );
 
-            if (user) {
-                return {
-                    id: user.id.toString(),
-                    name: user.name,
-                    email: user.email,
-                    role: user.role,
-                };
-            } else {
-                throw new Error("Email or password is incorrect");
-            }
-        },
-        }),
+        if (user) {
+          return {
+            id: user.id.toString(),
+            name: user.name,
+            email: user.email,
+            role: user.role,
+          };
+        } else {
+          throw new Error("Email or password is incorrect");
+        }
+      },
+    }),
   ],
   pages: {
     signIn: "/signIn",
+    signOut: "/signIn",
     error: "/signIn",
-  }
+  },
 };
 
 const handler = NextAuth(authOptions);
 
-
-export { handler as GET, handler as POST }
-
+export { handler as GET, handler as POST };

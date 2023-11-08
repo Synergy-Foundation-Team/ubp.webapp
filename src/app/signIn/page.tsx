@@ -1,14 +1,16 @@
-"use client"
+"use client";
 import LoginComponent from "@/components/LoginComponent";
 import React from "react";
 
 type Props = {
-  params?: Record<"callbackUrl" | "error", string>
-}
+  searchParams?: Record<"callbackUrl" | "error", string>;
+};
 
 export default function SignInPage(props: Readonly<Props>) {
-
   return (
-    <LoginComponent error={props.params?.error} callbackUrl={props.params?.callbackUrl} />
+    <LoginComponent
+      error={props.searchParams?.error}
+      callbackUrl={props.searchParams?.callbackUrl}
+    />
   );
 }
