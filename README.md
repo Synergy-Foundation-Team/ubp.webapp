@@ -1,4 +1,4 @@
-# UBP: รบบกาก
+# UBP: ระบบกาก
 
 Figma design [link](https://www.figma.com/file/y9pyWFj8dbepadCU245ElQ/ubp?type=design&node-id=0%3A1&mode=design&t=Gdqs1ZC7wpOx8gnD-1)
 
