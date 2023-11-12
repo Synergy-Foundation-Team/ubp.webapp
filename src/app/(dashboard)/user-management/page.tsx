@@ -76,7 +76,9 @@ export default function Page({}: Props) {
         <Table aria-label="Example table with dynamic content">
           <TableHeader columns={columns}>
             {(column) => (
-              <TableColumn key={column.key}>{column.label}</TableColumn>
+              <TableColumn key={column.key} className="text-md font-bold">
+                {column.label}
+              </TableColumn>
             )}
           </TableHeader>
           <TableBody items={rows} emptyContent="No rows to display.">

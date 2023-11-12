@@ -5,7 +5,7 @@ export const cardItems = [
   {
     id: 1,
     icon: <CiBoxes className="text-indigo-500" />,
-    text: "Stack",
+    text: "Stock",
     picture: "/assets/inventory.png",
     path: "/",
   },
@@ -33,8 +33,15 @@ export const cardItems = [
   {
     id: 5,
     icon: <CiMemoPad className="text-blue-500" />,
-    text: "Report",
+    text: "Supplier",
     picture: "/assets/seo-report.png",
+    path: "/",
+  },
+  {
+    id: 6,
+    icon: <CiMemoPad className="text-blue-500" />,
+    text: "Report",
+    picture: "/assets/statistics.png",
     path: "/",
   },
 ];
