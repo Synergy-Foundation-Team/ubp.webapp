@@ -6,6 +6,7 @@ import { Button } from "@nextui-org/react";
 
 export default function SignInButton() {
   const { data: session } = useSession();
+  console.log({ session });
 
   const LogoutButton = React.memo(function LogoutButton() {
     return (
