@@ -7,22 +7,21 @@ import { Button } from "@nextui-org/react";
 export default function SignInButton() {
   const { data: session } = useSession();
 
-  if (session && session.user) {
+  const LogoutButton = React.memo(function LogoutButton() {
     return (
-      <div>
-        <Button
-          color="danger"
-          variant="flat"
-          startContent={<LuLogIn />}
-          onClick={() => signOut({ redirect: true, callbackUrl: "/signIn" })}
-        >
-          Logout
-        </Button>
-      </div>
+      <Button
+        color="danger"
+        variant="flat"
+        startContent={<LuLogIn />}
+        onClick={() => signOut({ redirect: true, callbackUrl: "/signIn" })}
+      >
+        Logout
+      </Button>
     );
-  }
-  return (
-    <div>
+  });
+
+  const LoginButton = React.memo(function LoginButton() {
+    return (
       <Button
         onClick={() => signIn()}
         color="primary"
@@ -32,6 +31,10 @@ export default function SignInButton() {
       >
         Login
       </Button>
-    </div>
+    );
+  });
+
+  return (
+    <div>{session && session.user ? <LogoutButton /> : <LoginButton />}</div>
   );
 }
