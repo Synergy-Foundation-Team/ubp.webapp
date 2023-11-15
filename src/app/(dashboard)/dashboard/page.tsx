@@ -18,7 +18,7 @@ export default function DashboardPage() {
             <Link href={item.path}>
               <CardUI
                 fullWidth
-                classNames="w-full h-auto bg-white hover:shadow-xl transition-shadow duration-300"
+                classNames="w-full h-auto bg-white hover:shadow-xl transition-shadow duration-300 cursor-pointer"
                 bodyClassName="p-6 flex flex-col items-center justify-center"
               >
                 <div className="text-6xl mb-4">

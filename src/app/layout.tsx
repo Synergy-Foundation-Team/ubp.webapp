@@ -19,7 +19,7 @@ interface Props {
 
 export default function RootLayout({ children }: Readonly<Props>) {
   return (
-    <html suppressHydrationWarning lang="en" className="light">
+    <html suppressHydrationWarning={true} lang="en" className="light">
       <body className={sarabun.className}>
         <Providers>{children}</Providers>
       </body>

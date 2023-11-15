@@ -15,13 +15,13 @@ const NavbarUI: React.FC = () => {
   return (
     <Navbar shouldHideOnScroll isBordered>
       <NavbarBrand>
-        <Image
+        {/* <Image
           src="/assets/UBP_LOGO.svg"
           width={70}
           height={70}
           alt="UBP LOGO OF THIS WEB SITE"
-        />
-        <p className="font-bold text-2lx text-amber-500">Ubon Bio Power</p>
+        /> */}
+        <p className="font-bold text-2lx text-amber-500 flex">Ubon Bio Power</p>
       </NavbarBrand>
       <NavbarContent justify="end">
         <NavbarItem>

@@ -44,7 +44,7 @@ export default function LoginComponent({ callbackUrl, error }: Props) {
     if (errors) {
       toast.error(errors);
     }
-  }, [errors]);
+  }, [error, errors]);
 
   return (
     <div className="flex flex-col w-full h-screen justify-center items-center">
