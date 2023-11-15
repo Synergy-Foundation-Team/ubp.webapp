@@ -14,11 +14,12 @@ type Breadcrumb = {
 
 type Props = {
   breadcrumbs: Breadcrumb[];
+  size?: "sm" | "md" | "lg";
 };
 
-export default function BreadcrumbsUI({ breadcrumbs }: Props) {
+export default function BreadcrumbsUI({ breadcrumbs, size = "lg" }: Props) {
   return (
-    <Breadcrumbs>
+    <Breadcrumbs size={size}>
       {breadcrumbs.map((breadcrumb, index) => (
         <BreadcrumbItem key={index} className="font-bold text-lg">
           <Link href={breadcrumb.path}>{breadcrumb.text}</Link>

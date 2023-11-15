@@ -14,21 +14,22 @@ import {
   getKeyValue,
 } from "@nextui-org/react";
 import React from "react";
-import { AiOutlineSearch, AiOutlineUserAdd } from "react-icons/ai";
+import {
+  AiOutlineSearch,
+  AiOutlineUserAdd,
+  AiFillFileAdd,
+} from "react-icons/ai";
+
 type Props = {};
 
 const columns = [
   {
-    key: "fullName",
-    label: "ชื่อ - นามสกุล",
+    key: "rawMaterialName",
+    label: "Raw Material Name",
   },
   {
-    key: "userName",
-    label: "Username",
-  },
-  {
-    key: "role",
-    label: "ตำแหน่ง",
+    key: "qty",
+    label: "Qty to Menufacture",
   },
   {
     key: "createDate",
@@ -42,13 +43,13 @@ const columns = [
 
 const rows: any = [];
 
-export default function page({}: Props) {
+export default function Page({}: Props) {
   return (
     <div className="mx-6 p-4 lg:mx-12">
       <BreadcrumbComponent />
       <div className="flex flex-col w-full lg:flex-row justify-between items-center mt-10">
         <div className="flex items-center lg:w-auto">
-          <h1 className="text-4xl font-bold">จัดการข้อมูล Supplier</h1>
+          <h1 className="text-4xl font-bold">จัดการวัตถุดิบ</h1>
         </div>
         <div className="flex flex-col lg:flex-row gap-2 mt-4 lg:mt-0">
           <div className="w-full lg:w-auto">
@@ -65,14 +66,13 @@ export default function page({}: Props) {
               type="button"
               variant="solid"
               color="primary"
-              endContent={<AiOutlineUserAdd />}
+              endContent={<AiFillFileAdd />}
             >
-              เพิ่มโรงาน
+              เพิ่มวัตถุดิบ
             </ButtonUI>
           </div>
         </div>
       </div>
-
       <div className="mt-4">
         <Table aria-label="Example table with dynamic content">
           <TableHeader columns={columns}>

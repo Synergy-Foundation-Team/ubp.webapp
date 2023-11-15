@@ -26,9 +26,9 @@ export const cardItems = [
   {
     id: 4,
     icon: <LuDatabaseBackup className="text-yellow-500" />,
-    text: "Master data",
+    text: "Raw Materials",
     picture: "/assets/MasterData.png",
-    path: "/",
+    path: "/raw-materials",
   },
   {
     id: 5,

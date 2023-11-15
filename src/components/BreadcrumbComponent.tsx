@@ -1,6 +1,6 @@
 "use client";
 
-import React, { use } from "react";
+import React from "react";
 import BreadcrumbsUI from "@/ui/BreadcrumbsUI";
 import { cardItems } from "@/constants";
 import { usePathname } from "next/navigation";

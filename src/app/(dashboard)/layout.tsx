@@ -15,7 +15,6 @@ export default async function DashboardLayout({ children }: Readonly<Props>) {
   return (
     <div>
       <NavbarUI />
-
       <main>{children}</main>
     </div>
   );
