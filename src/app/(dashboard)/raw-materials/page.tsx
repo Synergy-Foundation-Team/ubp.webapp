@@ -19,6 +19,9 @@ import {
   AiOutlineUserAdd,
   AiFillFileAdd,
 } from "react-icons/ai";
+import { useDisclosure } from "@nextui-org/react";
+import ModalUI from "@/ui/ModalUI";
+import InputFieldDatePickerUI from "@/ui/InputFieldDatePickerUI";
 
 type Props = {};
 
@@ -44,9 +47,28 @@ const columns = [
 const rows: any = [];
 
 export default function Page({}: Props) {
+  const { isOpen, onOpen, onOpenChange } = useDisclosure();
+
   return (
     <div className="mx-6 p-4 lg:mx-12">
       <BreadcrumbComponent />
+      <ModalUI
+        title="เพิ่มข้อมูลวัตถุดิบ"
+        isOpen={isOpen}
+        onClose={onOpenChange}
+      >
+        <main className="flex flex-col gap-5">
+          <div className="w-full lg:w-auto">
+            <InputFieldUI label="ชื่อวัตถุดิบ" isRequired isClearable />
+          </div>
+          <div className="w-full lg:w-auto">
+            <InputFieldUI label="Qty to Menufacture" isRequired isClearable />
+          </div>
+          <div className="w-full lg:w-auto">
+            <InputFieldDatePickerUI isDisabled />
+          </div>
+        </main>
+      </ModalUI>
       <div className="flex flex-col w-full lg:flex-row justify-between items-center mt-10">
         <div className="flex items-center lg:w-auto">
           <h1 className="text-4xl font-bold">จัดการวัตถุดิบ</h1>
@@ -67,6 +89,7 @@ export default function Page({}: Props) {
               variant="solid"
               color="primary"
               endContent={<AiFillFileAdd />}
+              onPress={onOpen}
             >
               เพิ่มวัตถุดิบ
             </ButtonUI>

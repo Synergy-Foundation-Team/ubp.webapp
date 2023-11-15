@@ -28,6 +28,7 @@ type Props = {
   isInvalid?: boolean;
   isDisabled?: boolean;
   isReadOnly?: boolean;
+  isRequired?: boolean;
   baseRef?: React.Ref<HTMLInputElement>;
   disableAnimation?: boolean;
   onChange?: (e: any) => void;
@@ -54,6 +55,7 @@ export default function InputFieldUI({
   isInvalid,
   isDisabled,
   isReadOnly,
+  isRequired,
   baseRef,
   disableAnimation,
   type,
@@ -82,6 +84,7 @@ export default function InputFieldUI({
       isInvalid={isInvalid}
       isDisabled={isDisabled}
       isReadOnly={isReadOnly}
+      isRequired={isRequired}
       disableAnimation={disableAnimation}
       type={type}
       label={label}
