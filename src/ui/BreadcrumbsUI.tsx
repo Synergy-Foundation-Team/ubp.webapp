@@ -7,7 +7,7 @@ import Link from "next/link";
 type Breadcrumb = {
   id: number;
   icon: React.ReactNode;
-  text: string;
+  text: string | React.ReactNode;
   picture: string;
   path: string;
 };
@@ -20,7 +20,7 @@ export default function BreadcrumbsUI({ breadcrumbs }: Props) {
   return (
     <Breadcrumbs>
       {breadcrumbs.map((breadcrumb, index) => (
-        <BreadcrumbItem key={index}>
+        <BreadcrumbItem key={index} className="font-bold text-lg">
           <Link href={breadcrumb.path}>{breadcrumb.text}</Link>
         </BreadcrumbItem>
       ))}

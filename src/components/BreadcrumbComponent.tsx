@@ -4,11 +4,12 @@ import React, { use } from "react";
 import BreadcrumbsUI from "@/ui/BreadcrumbsUI";
 import { cardItems } from "@/constants";
 import { usePathname } from "next/navigation";
+import { AiFillHome } from "react-icons/ai";
 
 type Breadcrumb = {
   id: number;
   icon: React.ReactNode;
-  text: string;
+  text: string | React.ReactNode;
   picture: string;
   path: string;
 };
@@ -18,15 +19,22 @@ export default function BreadcrumbComponent() {
   const [breadcrumbs, setBreadcrumbs] = React.useState<Breadcrumb[]>([]);
 
   React.useEffect(() => {
-    const filterBreads: Breadcrumb[] = [];
-    cardItems.forEach((item) => {
-      if (item.path !== "/dashboard") {
-        filterBreads.push(cardItems[0], item);
-      }
-    });
+    const dashboard: Breadcrumb = {
+      id: 0,
+      icon: <AiFillHome />,
+      text: <AiFillHome />,
+      picture: "",
+      path: "/",
+    };
 
+    const filterBreads: Breadcrumb[] = [];
+
+    filterBreads.push(
+      dashboard,
+      ...cardItems.filter((item) => item.path === pathname)
+    );
     setBreadcrumbs(filterBreads);
-  }, [cardItems, pathname]);
+  }, [pathname]);
 
   return <BreadcrumbsUI breadcrumbs={breadcrumbs} />;
 }

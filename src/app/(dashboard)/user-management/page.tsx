@@ -1,5 +1,6 @@
 "use client";
 
+import BreadcrumbComponent from "@/components/BreadcrumbComponent";
 import ButtonUI from "@/ui/ButtonUI";
 import InputFieldUI from "@/ui/InputFieldUI";
 import {
@@ -45,6 +46,9 @@ const rows: any = [];
 export default function Page({}: Props) {
   return (
     <div className="mx-6 p-4 lg:mx-12">
+      <div className="h-16">
+        <BreadcrumbComponent />
+      </div>
       <div className="flex flex-col w-full lg:flex-row justify-between items-center mt-10">
         <div className="flex items-center lg:w-auto">
           <h1 className="text-4xl font-bold">จัดการผู้ใช้งาน</h1>
