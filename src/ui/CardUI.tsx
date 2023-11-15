@@ -25,6 +25,7 @@ type Props = {
   onPressUp?: (e: any) => void;
   onPressEnd?: (e: any) => void;
   onPressStart?: (e: any) => void;
+  onClick?: () => void;
 };
 
 export default function CardUI({
