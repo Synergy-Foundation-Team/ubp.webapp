@@ -16,7 +16,7 @@ import {
   User,
   getKeyValue,
 } from "@nextui-org/react";
-import React from "react";
+import React, { useState } from "react";
 import {
   AiOutlineSearch,
   AiOutlineUserAdd,
@@ -104,6 +104,14 @@ const rows: User[] = [
 ];
 
 export default function page({}: Props) {
+  const [supplierData, setSupplierData] = useState({
+    serialNumber: "12345-67890",
+    supplierName: "",
+    supplierGroup: "",
+    supplierType: "",
+    country: "",
+    taxId: "",
+  });
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const renderCell = React.useCallback((user: User, columnKey: React.Key) => {
     const cellValue = user[columnKey as keyof User];
@@ -158,29 +166,77 @@ export default function page({}: Props) {
     console.log("Delete clicked for user:", user);
   };
 
+  const handleChange = (field: string, value: any) => {
+    setSupplierData({ ...supplierData, [field]: value });
+  };
+
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+    // Implement your form submission logic here
+    console.log("Form submitted with data:", supplierData);
+  };
+
   return (
     <div className="mx-6 p-4 lg:mx-12">
       <BreadcrumbComponent />
       <ModalUI
-        title="เพิ่มข้อมูลวัตถุดิบ"
+        title="เพิ่มข้อมูล Supplier"
         isOpen={isOpen}
         onClose={onOpenChange}
       >
-        <main className="flex flex-col gap-5">
-          <div className="w-full lg:w-auto">
-            <InputFieldUI label="ชื่อวัตถุดิบ" isRequired isClearable />
-          </div>
-          <div className="w-full lg:w-auto">
-            <InputFieldUI label="Qty to Menufacture" isRequired isClearable />
-          </div>
-          <div className="w-full lg:w-auto">
-            <InputFieldDatePickerUI isDisabled />
-          </div>
-        </main>
+        <form onSubmit={handleSubmit}>
+          <main className="grid gap-5">
+            <div className="w-full lg:w-auto">
+              <InputFieldUI
+                label="ชื่อวัตถุดิบ"
+                value={supplierData.supplierName}
+                isRequired
+                isClearable
+                onValueChange={(value) => handleChange("supplierName", value)}
+              />
+            </div>
+
+            <div className="w-full lg:w-auto">
+              <InputFieldUI
+                label="กลุ่ม Supplier"
+                value={supplierData.supplierGroup}
+                isRequired
+                onValueChange={(value) => handleChange("supplierGroup", value)}
+              />
+            </div>
+
+            <div className="w-full lg:w-auto">
+              <InputFieldUI
+                label="ประเภท Supplier"
+                value={supplierData.supplierType}
+                isRequired
+                onValueChange={(value) => handleChange("supplierType", value)}
+              />
+            </div>
+
+            <div className="w-full lg:w-auto">
+              <InputFieldUI
+                label="ประเทศ"
+                value={supplierData.country}
+                isRequired
+                onValueChange={(value) => handleChange("country", value)}
+              />
+            </div>
+
+            <div className="w-full lg:w-auto">
+              <InputFieldUI
+                label="หมายเลขประจำตัวผู้เสียภาษี"
+                value={supplierData.taxId}
+                isRequired
+                onValueChange={(value) => handleChange("taxId", value)}
+              />
+            </div>
+          </main>
+        </form>
       </ModalUI>
       <div className="flex flex-col w-full lg:flex-row justify-between items-center mt-10">
         <div className="flex items-center lg:w-auto">
-          <h1 className="text-4xl font-bold">จัดการวัตถุดิบ</h1>
+          <h1 className="text-4xl font-bold">จัดการข้อมูล Supplier</h1>
         </div>
         <div className="flex flex-col lg:flex-row gap-2 mt-4 lg:mt-0">
           <div className="w-full lg:w-auto">
@@ -200,7 +256,7 @@ export default function page({}: Props) {
               endContent={<AiFillFileAdd />}
               onPress={onOpen}
             >
-              เพิ่มวัตถุดิบ
+              เพิ่ม Supplier
             </ButtonUI>
           </div>
         </div>

@@ -11,6 +11,7 @@ import {
   TableColumn,
   TableHeader,
   TableRow,
+  Tooltip,
   getKeyValue,
 } from "@nextui-org/react";
 import React from "react";
@@ -22,6 +23,19 @@ import {
 import { useDisclosure } from "@nextui-org/react";
 import ModalUI from "@/ui/ModalUI";
 import InputFieldDatePickerUI from "@/ui/InputFieldDatePickerUI";
+import { DeleteIcon } from "@/components/icons/DeleteIcon";
+import { EditIcon } from "@/components/icons/EditIcon";
+import { EyeIcon } from "@/components/icons/EyeIcon";
+
+type User = {
+  serialNumber: string;
+  supplierName: string;
+  supplierGroup: string;
+  supplierType: string;
+  country: string;
+  taxId: string;
+  action: string;
+};
 
 type Props = {};
 
@@ -79,7 +93,58 @@ const rows = [
 
 export default function Page({}: Props) {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
+  const renderCell = React.useCallback((user: User, columnKey: React.Key) => {
+    const cellValue = user[columnKey as keyof User];
 
+    switch (columnKey) {
+      case "action":
+        return (
+          <div className="relative flex items-center gap-2">
+            <Tooltip content="See Detail">
+              <span
+                className="text-lg text-default-400 cursor-pointer active:opacity-50"
+                onClick={() => handleSeeDetail(user)}
+              >
+                <EyeIcon />
+              </span>
+            </Tooltip>
+            <Tooltip content="Update">
+              <span
+                className="text-lg text-default-400 cursor-pointer active:opacity-50"
+                onClick={() => handleUpdate(user)}
+              >
+                <EditIcon />
+              </span>
+            </Tooltip>
+            <Tooltip color="danger" content="Delete">
+              <span
+                className="text-lg text-danger cursor-pointer active:opacity-50"
+                onClick={() => handleDelete(user)}
+              >
+                <DeleteIcon />
+              </span>
+            </Tooltip>
+          </div>
+        );
+      default:
+        return cellValue;
+    }
+  }, []);
+
+  const handleSeeDetail = (user: User) => {
+    // Implement the logic to see details here
+    console.log("See Detail clicked for user:", user);
+  };
+
+  const handleUpdate = (user: User) => {
+    // Implement the logic to update here
+    console.log("Update clicked for user:", user);
+  };
+
+  const handleDelete = (user: User) => {
+    // Implement the logic to delete here
+    console.log("Delete clicked for user:", user);
+  };
   return (
     <div className="mx-6 p-4 lg:mx-12">
       <BreadcrumbComponent />
@@ -128,7 +193,7 @@ export default function Page({}: Props) {
         </div>
       </div>
       <div className="mt-4">
-        <Table aria-label="Example table with dynamic content">
+        <Table aria-label="Supplier Table">
           <TableHeader columns={columns}>
             {(column) => (
               <TableColumn key={column.key} className="text-md font-bold">
@@ -137,11 +202,13 @@ export default function Page({}: Props) {
             )}
           </TableHeader>
           <TableBody items={rows} emptyContent="No rows to display.">
-            {rows.map((row: object, index: number) => (
+            {rows.map((row: any, index: number) => (
               <TableRow key={index}>
-                {(columnKey) => (
-                  <TableCell>{getKeyValue(row, columnKey)}</TableCell>
-                )}
+                {columns.map((column) => (
+                  <TableCell key={column.key}>
+                    {renderCell(row, column.key)}
+                  </TableCell>
+                ))}
               </TableRow>
             ))}
           </TableBody>
