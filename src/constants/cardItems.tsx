@@ -42,6 +42,6 @@ export const cardItems = [
     icon: <CiMemoPad className="text-blue-500" />,
     text: "Report",
     picture: "/assets/statistics.png",
-    path: "/",
+    path: "/report",
   },
 ];
