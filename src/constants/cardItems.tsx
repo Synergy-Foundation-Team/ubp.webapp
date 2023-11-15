@@ -7,7 +7,7 @@ export const cardItems = [
     icon: <CiBoxes className="text-indigo-500" />,
     text: "Stock",
     picture: "/assets/inventory.png",
-    path: "/",
+    path: "/stock",
   },
   {
     id: 2,
