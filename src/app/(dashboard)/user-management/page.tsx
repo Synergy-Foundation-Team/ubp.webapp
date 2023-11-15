@@ -127,24 +127,24 @@ export default function Page({}: Props) {
             <InputFieldUI label="Username" isRequired isClearable />
           </div>
           <div className="w-full lg:w-auto col-span-2">
-          <InputFieldUI
-                onValueChange={(e) => setPassword(e)}
-                label="password"
-                endContent={
-                  <button
-                    className="focus:outline-none"
-                    type="button"
-                    onClick={toggleVisibility}
-                  >
-                    {isVisible ? (
-                      <LuEyeOff className="text-2xl text-default-400 pointer-events-none" />
-                    ) : (
-                      <LuEye className="text-2xl text-default-400 pointer-events-none" />
-                    )}
-                  </button>
-                }
-                type={isVisible ? "text" : "password"}
-              />
+            <InputFieldUI
+              onValueChange={(e) => setPassword(e)}
+              label="password"
+              endContent={
+                <button
+                  className="focus:outline-none"
+                  type="button"
+                  onClick={toggleVisibility}
+                >
+                  {isVisible ? (
+                    <LuEyeOff className="text-2xl text-default-400 pointer-events-none" />
+                  ) : (
+                    <LuEye className="text-2xl text-default-400 pointer-events-none" />
+                  )}
+                </button>
+              }
+              type={isVisible ? "text" : "password"}
+            />
           </div>
           <div className="w-full lg:w-auto col-span-2">
             <InputFieldUI label="ตำแหน่ง" isRequired isClearable />
