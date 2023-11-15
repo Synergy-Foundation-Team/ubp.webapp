@@ -41,7 +41,64 @@ const columns = [
   },
 ];
 
-const rows: any = [];
+const rows: any = [
+  {
+    fullName: "ชื่อ - นามสกุล",
+    userName: "Username",
+    role: "ตำแหน่ง",
+    createDate: "วันที่สร้าง",
+    action: "Action",
+  },
+  {
+    fullName: "ชื่อ - นามสกุล",
+    userName: "Username",
+    role: "ตำแหน่ง",
+    createDate: "วันที่สร้าง",
+    action: "Action",
+  },
+  {
+    fullName: "ชื่อ - นามสกุล",
+    userName: "Username",
+    role: "ตำแหน่ง",
+    createDate: "วันที่สร้าง",
+    action: "Action",
+  },
+  {
+    fullName: "ชื่อ - นามสกุล",
+    userName: "Username",
+    role: "ตำแหน่ง",
+    createDate: "วันที่สร้าง",
+    action: "Action",
+  },
+  {
+    fullName: "ชื่อ - นามสกุล",
+    userName: "Username",
+    role: "ตำแหน่ง",
+    createDate: "วันที่สร้าง",
+    action: "Action",
+  },
+  {
+    fullName: "ชื่อ - นามสกุล",
+    userName: "Username",
+    role: "ตำแหน่ง",
+    createDate: "วันที่สร้าง",
+    action: "Action",
+  },
+  {
+    fullName: "ชื่อ - นามสกุล",
+    userName: "Username",
+    role: "ตำแหน่ง",
+    createDate: "วันที่สร้าง",
+    action: "Action",
+  },
+  {
+    fullName: "ชื่อ - นามสกุล",
+    userName: "Username",
+    role: "ตำแหน่ง",
+    createDate: "วันที่สร้าง",
+    action: "Action",
+  },
+];
 
 export default function Page({}: Props) {
   return (
@@ -86,7 +143,9 @@ export default function Page({}: Props) {
             {([] as any[]).map((row, rowIndex) => (
               <TableRow key={rowIndex}>
                 {columns.map((column) => (
-                  <TableCell key={column.key}>{[]}</TableCell>
+                  <TableCell key={column.key}>
+                    {getKeyValue(row, column.key)}
+                  </TableCell>
                 ))}
               </TableRow>
             ))}

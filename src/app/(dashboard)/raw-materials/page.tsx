@@ -44,7 +44,38 @@ const columns = [
   },
 ];
 
-const rows: any = [];
+const rows = [
+  {
+    rawMaterialName: "Raw Material 1",
+    qty: 100,
+    createDate: "2023-11-15",
+    action: "Edit",
+  },
+  {
+    rawMaterialName: "Raw Material 2",
+    qty: 200,
+    createDate: "2023-11-14",
+    action: "Edit",
+  },
+  {
+    rawMaterialName: "Raw Material 3",
+    qty: 150,
+    createDate: "2023-11-13",
+    action: "Edit",
+  },
+  {
+    rawMaterialName: "Raw Material 4",
+    qty: 300,
+    createDate: "2023-11-12",
+    action: "Edit",
+  },
+  {
+    rawMaterialName: "Raw Material 5",
+    qty: 50,
+    createDate: "2023-11-11",
+    action: "Edit",
+  },
+];
 
 export default function Page({}: Props) {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
@@ -106,11 +137,11 @@ export default function Page({}: Props) {
             )}
           </TableHeader>
           <TableBody items={rows} emptyContent="No rows to display.">
-            {([] as any[]).map((row, rowIndex) => (
-              <TableRow key={rowIndex}>
-                {columns.map((column) => (
-                  <TableCell key={column.key}>{[]}</TableCell>
-                ))}
+            {rows.map((row: object, index: number) => (
+              <TableRow key={index}>
+                {(columnKey) => (
+                  <TableCell>{getKeyValue(row, columnKey)}</TableCell>
+                )}
               </TableRow>
             ))}
           </TableBody>
