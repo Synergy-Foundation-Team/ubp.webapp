@@ -7,6 +7,8 @@ import 'echarts/lib/component/tooltip';
 import 'echarts/lib/component/toolbox';
 import 'echarts/lib/component/visualMap';
 import 'echarts/lib/component/markArea';
+import BreadcrumbComponent from '@/components/BreadcrumbComponent';
+import BaseTableReport from '@/components/TableComponent/bassTableReport';
 
 type EChartsOption = echarts.EChartsOption;
 
@@ -16,7 +18,7 @@ const EChartsComponent: React.FC = () => {
     const myChart = echarts.init(chartDom);
     const option: EChartsOption = {
       title: {
-        text: 'Distribution of Electricity',
+        text: 'ผลผลิตไฟฟ้าที่ได้',
         subtext: 'Fake Data',
       },
       tooltip: {
@@ -90,7 +92,21 @@ const EChartsComponent: React.FC = () => {
     };
   }, []);
 
-  return <div id="main" style={{ width: '100%', height: '400px' }} />;
+  return (
+    <div className="mx-6 p-4 lg:mx-12">
+      <div className="flex flex-col w-full lg:flex-row justify-between items-center mt-10">
+        <div className="flex items-center lg:w-auto">
+          <h1 className="text-4xl font-bold">รายงาน</h1>
+        </div>
+      </div>
+      <BreadcrumbComponent />
+      
+      <BaseTableReport classNames="p-4" />
+
+      <div id="main" style={{ width: '100%', height: '400px' }} />;
+      
+    </div>
+  )
 };
 
 export default EChartsComponent;

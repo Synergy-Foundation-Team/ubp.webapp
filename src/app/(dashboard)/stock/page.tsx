@@ -27,13 +27,11 @@ import { DeleteIcon } from "@/components/icons/DeleteIcon";
 import { EditIcon } from "@/components/icons/EditIcon";
 import { EyeIcon } from "@/components/icons/EyeIcon";
 
-type User = {
-  serialNumber: string;
-  supplierName: string;
-  supplierGroup: string;
-  supplierType: string;
-  country: string;
-  taxId: string;
+type Stock = {
+  title: string;
+  status: string;
+  date: string;
+  grandTotal: string;
   action: string;
 };
 
@@ -41,16 +39,20 @@ type Props = {};
 
 const columns = [
   {
-    key: "rawMaterialName",
-    label: "Raw Material Name",
+    key: "title",
+    label: "Title",
   },
   {
-    key: "qty",
-    label: "Qty to Menufacture",
+    key: "status",
+    label: "Status",
   },
   {
-    key: "createDate",
-    label: "วันที่สร้าง",
+    key: "date",
+    label: "Date",
+  },
+  {
+    key: "grandTotal",
+    label: "GrandTotal",
   },
   {
     key: "action",
@@ -58,45 +60,82 @@ const columns = [
   },
 ];
 
-const rows = [
+const rows: Stock[] = [
   {
-    rawMaterialName: "น้ำกากส่า",
-    qty: 100,
-    createDate: "2023-11-15",
+    title: "บริษัท เอี่ยมศิริแป้งมัน จำกัด",
+    status: "cancel",
+    date: "2021-08-01",
+    grandTotal: "100,000",
     action: "",
   },
   {
-    rawMaterialName: "มันสำปะหลัง",
-    qty: 1,
-    createDate: "2023-11-14",
+    title: "บริษัท สหกรณ์ อาหาร จำกัด",
+    status: "To recive",
+    date: "2021-08-01",
+    grandTotal: "100,000",
     action: "",
   },
   {
-    rawMaterialName: "กากมันสำปะหลัง",
-    qty: 4,
-    createDate: "2023-11-13",
+    title: "บริษัท สหกรณ์ อาหาร จำกัด",
+    status: "To recive",
+    date: "2021-08-01",
+    grandTotal: "100,000",
     action: "",
   },
   {
-    rawMaterialName: "กากน้ำตาล (Molasses)",
-    qty: 8,
-    createDate: "2023-11-12",
+    title: "บริษัท สหกรณ์ อาหาร จำกัด",
+    status: "cancel",
+    date: "2021-08-01",
+    grandTotal: "100,000",
     action: "",
   },
   {
-    rawMaterialName: "น้ำเสียต่าง ๆ",
-    qty: 2,
-    createDate: "2023-11-11",
-    action: "Edit",
+    title: "บริษัท สหกรณ์ อาหาร จำกัด",
+    status: "To recive",
+    date: "2021-08-01",
+    grandTotal: "100,000",
+    action: "",
+  },
+  {
+    title: "บริษัท สหกรณ์ อาหาร จำกัด",
+    status: "To recive",
+    date: "2021-08-01",
+    grandTotal: "100,000",
+    action: "",
+  },
+  {
+    title: "บริษัท สหกรณ์ อาหาร จำกัด",
+    status: "To recive",
+    date: "2021-08-01",
+    grandTotal: "100,000",
+    action: "",
+  },
+  {
+    title: "บริษัท สหกรณ์ อาหาร จำกัด",
+    status: "To recive",
+    date: "2021-08-01",
+    grandTotal: "100,000",
+    action: "",
   },
 ];
 
 export default function Page({}: Props) {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
-  const renderCell = React.useCallback((user: User, columnKey: React.Key) => {
-    const cellValue = user[columnKey as keyof User];
+  const renderCell = React.useCallback((user: Stock, columnKey: React.Key) => {
+    const cellValue = user[columnKey as keyof Stock];
 
     switch (columnKey) {
+      case "status":
+        return (
+          <div className="flex items-center">
+            <span
+              className={`w-3 h-3 rounded-full mr-2 ${
+                cellValue === "To recive" ? "bg-success" : "bg-danger"
+              }`}
+            ></span>
+            {cellValue}
+          </div>
+        );
       case "action":
         return (
           <div className="relative flex items-center gap-2">
@@ -131,17 +170,17 @@ export default function Page({}: Props) {
     }
   }, []);
 
-  const handleSeeDetail = (user: User) => {
+  const handleSeeDetail = (user: Stock) => {
     // Implement the logic to see details here
     console.log("See Detail clicked for user:", user);
   };
 
-  const handleUpdate = (user: User) => {
+  const handleUpdate = (user: Stock) => {
     // Implement the logic to update here
     console.log("Update clicked for user:", user);
   };
 
-  const handleDelete = (user: User) => {
+  const handleDelete = (user: Stock) => {
     // Implement the logic to delete here
     console.log("Delete clicked for user:", user);
   };
@@ -153,15 +192,33 @@ export default function Page({}: Props) {
         isOpen={isOpen}
         onClose={onOpenChange}
       >
-        <main className="flex flex-col gap-5">
-          <div className="w-full lg:w-auto">
-            <InputFieldUI label="ชื่อวัตถุดิบ" isRequired isClearable />
+        <main className="grid grid-cols-2 gap-5">
+          <div className="w-full lg:w-auto col-span-2">
+            <InputFieldUI label="บริษัท" isRequired isClearable />
           </div>
           <div className="w-full lg:w-auto">
-            <InputFieldUI label="Qty to Menufacture" isRequired isClearable />
+            <InputFieldDatePickerUI />
           </div>
           <div className="w-full lg:w-auto">
-            <InputFieldDatePickerUI isDisabled />
+            <InputFieldUI label="เวลา" isRequired isClearable />
+          </div>
+          <div className="w-full lg:w-auto ">
+            <InputFieldUI label="ประเภทกาก" isRequired isClearable />
+          </div>
+          <div className="w-full lg:w-auto ">
+            <InputFieldUI label="นำ้หนัก" isRequired isClearable />
+          </div>
+          <div className="w-full lg:w-auto ">
+            <InputFieldUI label="ทะเบียนรถ" isRequired isClearable />
+          </div>
+          <div className="w-full lg:w-auto ">
+            <InputFieldUI label="ราคา" isRequired isClearable />
+          </div>
+          <div className="w-full lg:w-auto ">
+            <InputFieldUI label="เลขที่ใบเสร็จ" isRequired isClearable />
+          </div>
+          <div className="w-full lg:w-auto ">
+            <InputFieldUI label="หมายเหตุ" isClearable />
           </div>
         </main>
       </ModalUI>
@@ -202,7 +259,7 @@ export default function Page({}: Props) {
             )}
           </TableHeader>
           <TableBody items={rows} emptyContent="No rows to display.">
-            {rows.map((row: any, index: number) => (
+            {rows.map((row: Stock, index: number) => (
               <TableRow key={index}>
                 {columns.map((column) => (
                   <TableCell key={column.key}>
