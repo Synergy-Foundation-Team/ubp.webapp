@@ -15,11 +15,7 @@ import {
   getKeyValue,
 } from "@nextui-org/react";
 import React from "react";
-import {
-  AiOutlineSearch,
-  AiOutlineUserAdd,
-  AiFillFileAdd,
-} from "react-icons/ai";
+import { AiOutlineSearch, AiFillFileAdd } from "react-icons/ai";
 import { useDisclosure } from "@nextui-org/react";
 import ModalUI from "@/ui/ModalUI";
 import InputFieldDatePickerUI from "@/ui/InputFieldDatePickerUI";
@@ -185,7 +181,7 @@ export default function Page({}: Props) {
     console.log("Delete clicked for user:", user);
   };
   return (
-    <div className="mx-6 p-4 lg:mx-12">
+    <div className="container mx-auto p-4 lg:mx-12">
       <BreadcrumbComponent />
       <ModalUI
         title="เพิ่มข้อมูลวัตถุดิบ"
