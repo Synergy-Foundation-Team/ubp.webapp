@@ -26,6 +26,7 @@ import InputFieldDatePickerUI from "@/ui/InputFieldDatePickerUI";
 import { DeleteIcon } from "@/components/icons/DeleteIcon";
 import { EditIcon } from "@/components/icons/EditIcon";
 import { EyeIcon } from "@/components/icons/EyeIcon";
+import PaginationComponent from "@/components/PaginationComponent";
 
 type User = {
   serialNumber: string;
@@ -213,6 +214,9 @@ export default function Page({}: Props) {
             ))}
           </TableBody>
         </Table>
+        <div className="flex w-full justify-end my-4">
+          <PaginationComponent total={100} initialPage={1} />
+        </div>
       </div>
     </div>
   );

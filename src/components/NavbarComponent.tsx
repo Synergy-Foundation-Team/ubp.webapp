@@ -18,7 +18,9 @@ const NavbarUI: React.FC = () => {
   return (
     <Navbar shouldHideOnScroll isBordered maxWidth="2xl">
       <NavbarBrand>
-        <p className="font-bold text-2lx text-amber-500 flex">Ubon Bio Power</p>
+        <div className="font-bold text-3xl text-amber-500 flex">
+          Ubon Bio Power
+        </div>
       </NavbarBrand>
       <NavbarContent justify="end">
         <NavbarItem className="flex flex-row gap-4 items-center">

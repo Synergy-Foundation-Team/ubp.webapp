@@ -12,5 +12,7 @@ export default function PaginationComponent({
   total,
   initialPage,
 }: PaginationComponentProps) {
-  return <Pagination total={total} initialPage={initialPage} />;
+  return (
+    <Pagination loop showControls total={total} initialPage={initialPage} />
+  );
 }

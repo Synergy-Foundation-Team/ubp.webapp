@@ -22,6 +22,7 @@ import InputFieldDatePickerUI from "@/ui/InputFieldDatePickerUI";
 import { DeleteIcon } from "@/components/icons/DeleteIcon";
 import { EditIcon } from "@/components/icons/EditIcon";
 import { EyeIcon } from "@/components/icons/EyeIcon";
+import PaginationComponent from "@/components/PaginationComponent";
 
 type Stock = {
   title: string;
@@ -246,7 +247,12 @@ export default function Page({}: Props) {
         </div>
       </div>
       <div className="mt-4">
-        <Table aria-label="Supplier Table">
+        <Table
+          aria-label="Supplier Table"
+          classNames={{
+            wrapper: "min-h-[222px]",
+          }}
+        >
           <TableHeader columns={columns}>
             {(column) => (
               <TableColumn key={column.key} className="text-md font-bold">
@@ -266,6 +272,9 @@ export default function Page({}: Props) {
             ))}
           </TableBody>
         </Table>
+        <div className="flex w-full justify-end my-4">
+          <PaginationComponent total={100} initialPage={1} />
+        </div>
       </div>
     </div>
   );

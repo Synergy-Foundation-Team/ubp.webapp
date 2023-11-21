@@ -18,6 +18,7 @@ import {
 } from "@nextui-org/react";
 import React, { useState } from "react";
 import { AiOutlineSearch, AiOutlineUserAdd } from "react-icons/ai";
+import PaginationComponent from "@/components/PaginationComponent";
 
 type Props = {};
 
@@ -195,6 +196,9 @@ export default function Page({}: Props) {
             ))}
           </TableBody>
         </Table>
+        <div className="flex w-full justify-end my-4">
+          <PaginationComponent total={100} initialPage={1} />
+        </div>
       </div>
     </div>
   );
