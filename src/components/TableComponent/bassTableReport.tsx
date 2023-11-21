@@ -116,25 +116,6 @@ export default function BaseTableReport({ classNames }: Readonly<Props>) {
     const cellValue = user[columnKey as keyof User];
 
     switch (columnKey) {
-      // case "name":
-      //   return (
-      //     <User
-      //       avatarProps={{ radius: "lg", src: user.avatar }}
-      //       description={user.email}
-      //       name={cellValue}
-      //     >
-      //       {user.email}
-      //     </User>
-      //   );
-      case "role":
-        return (
-          <div className="flex flex-col">
-            <p className="text-bold text-small capitalize">{cellValue}</p>
-            <p className="text-bold text-tiny capitalize text-default-400">
-              {user.team}
-            </p>
-          </div>
-        );
       case "status":
         return (
           <Chip

@@ -92,7 +92,7 @@ const rows = [
   },
 ];
 
-export default function Page({}: Props) {
+export default function RawMaterialsPage({}: Props) {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const renderCell = React.useCallback((user: User, columnKey: React.Key) => {
     const cellValue = user[columnKey as keyof User];

@@ -104,7 +104,7 @@ const rows: User[] = [
   },
 ];
 
-export default function page({}: Props) {
+export default function SupplierPage({}: Props) {
   const [supplierData, setSupplierData] = useState({
     serialNumber: "12345-67890",
     supplierName: "",

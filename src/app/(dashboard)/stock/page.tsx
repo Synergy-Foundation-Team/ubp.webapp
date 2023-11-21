@@ -116,7 +116,7 @@ const rows: Stock[] = [
   },
 ];
 
-export default function Page({}: Props) {
+export default function StockPage({}: Props) {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const renderCell = React.useCallback((user: Stock, columnKey: React.Key) => {
     const cellValue = user[columnKey as keyof Stock];
