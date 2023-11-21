@@ -14,7 +14,6 @@ import { useSession } from "next-auth/react";
 const NavbarUI: React.FC = () => {
   const { data: session } = useSession();
   const user = session?.user;
-  console.log(session);
 
   return (
     <Navbar shouldHideOnScroll isBordered maxWidth="2xl">
