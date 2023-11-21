@@ -29,6 +29,7 @@ import { AiOutlineDelete } from "react-icons/ai";
 import { DeleteIcon } from "@/components/icons/DeleteIcon";
 import { EditIcon } from "@/components/icons/EditIcon";
 import { EyeIcon } from "@/components/icons/EyeIcon";
+import PaginationComponent from "@/components/PaginationComponent";
 
 type Props = {};
 
@@ -103,7 +104,7 @@ const rows: User[] = [
   },
 ];
 
-export default function page({}: Props) {
+export default function SupplierPage({}: Props) {
   const [supplierData, setSupplierData] = useState({
     serialNumber: "12345-67890",
     supplierName: "",
@@ -283,6 +284,9 @@ export default function page({}: Props) {
             ))}
           </TableBody>
         </Table>
+        <div className="flex w-full justify-end my-4">
+          <PaginationComponent total={100} initialPage={1} />
+        </div>
       </div>
     </div>
   );
