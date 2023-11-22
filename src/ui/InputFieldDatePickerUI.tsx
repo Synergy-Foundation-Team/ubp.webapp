@@ -1,5 +1,6 @@
 "use client";
-import React from "react";
+
+import React, { useState } from "react";
 import { Input } from "@nextui-org/react";
 
 type Props = {
@@ -22,16 +23,18 @@ export default function InputFieldDatePickerUI({
   isDisabled,
 }: Props) {
   return (
-    <Input
-      className={classNames}
-      value={value}
-      placeholder={placeholder}
-      label={label}
-      type="date"
-      onChange={onChange}
-      onValueChange={onValueChange}
-      isDisabled={isDisabled}
-      defaultValue={new Date().toISOString().slice(0, 10)}
-    />
+    <div className="date-picker-container">
+      <label className="date-picker-label">{label}</label>
+      <Input
+        className={`date-picker-input ${classNames}`}
+        value={value}
+        placeholder={placeholder}
+        type="date"
+        onChange={onChange}
+        onValueChange={onValueChange}
+        disabled={isDisabled}
+        defaultValue={new Date().toISOString().slice(0, 10)}
+      />
+    </div>
   );
 }

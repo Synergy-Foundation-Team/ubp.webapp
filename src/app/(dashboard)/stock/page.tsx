@@ -15,17 +15,14 @@ import {
   getKeyValue,
 } from "@nextui-org/react";
 import React from "react";
-import {
-  AiOutlineSearch,
-  AiOutlineUserAdd,
-  AiFillFileAdd,
-} from "react-icons/ai";
+import { AiOutlineSearch, AiFillFileAdd } from "react-icons/ai";
 import { useDisclosure } from "@nextui-org/react";
 import ModalUI from "@/ui/ModalUI";
 import InputFieldDatePickerUI from "@/ui/InputFieldDatePickerUI";
 import { DeleteIcon } from "@/components/icons/DeleteIcon";
 import { EditIcon } from "@/components/icons/EditIcon";
 import { EyeIcon } from "@/components/icons/EyeIcon";
+import PaginationComponent from "@/components/PaginationComponent";
 
 type Stock = {
   title: string;
@@ -119,7 +116,7 @@ const rows: Stock[] = [
   },
 ];
 
-export default function Page({}: Props) {
+export default function StockPage({}: Props) {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const renderCell = React.useCallback((user: Stock, columnKey: React.Key) => {
     const cellValue = user[columnKey as keyof Stock];
@@ -185,7 +182,7 @@ export default function Page({}: Props) {
     console.log("Delete clicked for user:", user);
   };
   return (
-    <div className="mx-6 p-4 lg:mx-12">
+    <div className="container mx-auto p-4 lg:mx-12">
       <BreadcrumbComponent />
       <ModalUI
         title="เพิ่มข้อมูลวัตถุดิบ"
@@ -250,7 +247,12 @@ export default function Page({}: Props) {
         </div>
       </div>
       <div className="mt-4">
-        <Table aria-label="Supplier Table">
+        <Table
+          aria-label="Supplier Table"
+          classNames={{
+            wrapper: "min-h-[222px]",
+          }}
+        >
           <TableHeader columns={columns}>
             {(column) => (
               <TableColumn key={column.key} className="text-md font-bold">
@@ -270,6 +272,9 @@ export default function Page({}: Props) {
             ))}
           </TableBody>
         </Table>
+        <div className="flex w-full justify-end my-4">
+          <PaginationComponent total={100} initialPage={1} />
+        </div>
       </div>
     </div>
   );

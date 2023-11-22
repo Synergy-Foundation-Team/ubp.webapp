@@ -18,27 +18,14 @@ import {
   Selection,
   ChipProps,
   SortDescriptor,
-  useDisclosure,
-  Checkbox,
-  Link,
-  Modal,
-  ModalBody,
-  ModalContent,
-  ModalFooter,
-  ModalHeader,
-  Divider,
-  Radio,
-  RadioGroup,
-  ModalProps,
 } from "@nextui-org/react";
-import { columns, users, statusOptions } from "./fermentationData";
+import { columns, users, statusOptions } from "./data";
 import { ChevronDownIcon } from "../icons/ChevronDownIcon";
 import { PlusIcon } from "../icons/PlusIcon";
 import { SearchIcon } from "../icons/SearchIcon";
 import { VerticalDotsIcon } from "../icons/VerticalDotsIcon";
 import { capitalize } from "./utils";
-import { MailIcon } from "../icons/MailIcon";
-import { LockIcon } from "../icons/LockIcon";
+import Link from "next/link";
 
 const statusColorMap: Record<string, ChipProps["color"]> = {
   active: "success",
@@ -49,7 +36,8 @@ const statusColorMap: Record<string, ChipProps["color"]> = {
 const INITIAL_VISIBLE_COLUMNS = [
   "name",
   "status",
-  "date",
+  "start_date",
+  "complete_date",
   "grand_total",
   "actions",
 ];
@@ -58,11 +46,7 @@ type User = (typeof users)[0];
 type Props = {
   classNames: string;
 };
-export default function FermentationTable({ classNames }: Readonly<Props>) {
-  const { isOpen, onOpen, onOpenChange } = useDisclosure();
-  const [scrollBehavior, setScrollBehavior] =
-    React.useState<ModalProps["scrollBehavior"]>("inside");
-
+export default function BaseTableReport({ classNames }: Readonly<Props>) {
   const [filterValue, setFilterValue] = React.useState("");
   const [selectedKeys, setSelectedKeys] = React.useState<Selection>(
     new Set([])
@@ -203,7 +187,7 @@ export default function FermentationTable({ classNames }: Readonly<Props>) {
     return (
       <div className="flex flex-col gap-4">
         <div className="flex justify-between gap-3 items-end">
-          <Input
+          {/* <Input
             isClearable
             className="w-full sm:max-w-[44%]"
             placeholder="Search by name..."
@@ -211,7 +195,7 @@ export default function FermentationTable({ classNames }: Readonly<Props>) {
             value={filterValue}
             onClear={() => onClear()}
             onValueChange={onSearchChange}
-          />
+          /> */}
           <div className="flex gap-3">
             <Dropdown>
               <DropdownTrigger className="hidden sm:flex">
@@ -261,9 +245,6 @@ export default function FermentationTable({ classNames }: Readonly<Props>) {
                 ))}
               </DropdownMenu>
             </Dropdown>
-            <Button color="primary" onPress={onOpen} endContent={<PlusIcon />}>
-              Add New
-            </Button>
           </div>
         </div>
         <div className="flex justify-between items-center">
@@ -334,154 +315,43 @@ export default function FermentationTable({ classNames }: Readonly<Props>) {
   }, [selectedKeys, items.length, page, pages, hasSearchFilter]);
 
   return (
-    <>
-      <Table
-        className={classNames}
-        aria-label="Example table with custom cells, pagination and sorting"
-        isHeaderSticky
-        bottomContent={bottomContent}
-        bottomContentPlacement="outside"
-        classNames={{
-          wrapper: "max-h-[382px]",
-        }}
-        selectedKeys={selectedKeys}
-        selectionMode="multiple"
-        sortDescriptor={sortDescriptor}
-        topContent={topContent}
-        topContentPlacement="outside"
-        onSelectionChange={setSelectedKeys}
-        onSortChange={setSortDescriptor}
-      >
-        <TableHeader columns={headerColumns}>
-          {(column) => (
-            <TableColumn
-              key={column.uid}
-              align={column.uid === "actions" ? "center" : "start"}
-              allowsSorting={column.sortable}
-            >
-              {column.name}
-            </TableColumn>
-          )}
-        </TableHeader>
-        <TableBody emptyContent={"No users found"} items={sortedItems}>
-          {(item) => (
-            <TableRow key={item.id}>
-              {(columnKey) => (
-                <TableCell>{renderCell(item, columnKey)}</TableCell>
-              )}
-            </TableRow>
-          )}
-        </TableBody>
-      </Table>
-      <Modal
-        isOpen={isOpen}
-        onOpenChange={onOpenChange}
-        scrollBehavior={scrollBehavior}
-        placement="top-center"
-      >
-        <ModalContent>
-          {(onClose) => (
-            <>
-              <ModalHeader>จัดการวัตถุดิบลงบ่อ</ModalHeader>
-              <ModalBody>
-                <div className="grid grid-cols-2 gap-4">
-                  <Input
-                    className="col-span-2"
-                    autoFocus
-                    label="บริษัท"
-                    placeholder="กรอกชื่อบริษัท"
-                    variant="bordered"
-                  />
-                  <Input
-                    autoFocus
-                    label="ประเภทกาก"
-                    placeholder="กรอกชื่อประเภทกาก"
-                    variant="bordered"
-                  />
-                  <Input
-                    autoFocus
-                    label="ทะเบียนรถ"
-                    placeholder="กรอกทะเบียนรถ"
-                    variant="bordered"
-                  />
-                  <Input
-                    autoFocus
-                    label="วันที่"
-                    placeholder="กรอกวันที่"
-                    variant="bordered"
-                  />
-                  <Input
-                    autoFocus
-                    label="เวลา"
-                    placeholder="กรอกเวลา"
-                    variant="bordered"
-                  />
-                  <Input
-                    autoFocus
-                    label="น้ำหนัก"
-                    placeholder="กรอกน้ำหนัก"
-                    variant="bordered"
-                  />
-                  <Input
-                    autoFocus
-                    label="ราคา"
-                    placeholder="กรอกราคา"
-                    variant="bordered"
-                  />
-                  <Input
-                    autoFocus
-                    label="เลขใบเสร็จ"
-                    placeholder="กรอกเลขใบเสร็จ"
-                    variant="bordered"
-                  />
-                  <Input
-                    autoFocus
-                    label="หมายเหตุ"
-                    placeholder="กรอกหมายเหตุ"
-                    variant="bordered"
-                  />
-                </div>
-                <Divider className="my-4" />
-                <h3>ช้อมูลบ่อหมัก</h3>
-                <RadioGroup label="เลือกบ่อหมัก" orientation="horizontal">
-                  <Radio value="buenos-aires">บ่อ UBP</Radio>
-                  <Radio value="sydney">บ่อ สนพ.</Radio>
-                  <Radio value="san-francisco">บ่อ TYTS</Radio>
-                </RadioGroup>
-                <div className="grid grid-cols-2 gap-4">
-                  <Input
-                    autoFocus
-                    label="วันที่ลงบ่อนำ้หมัก"
-                    placeholder="กรอกวันที่ลงบ่อนำ้หมัก"
-                    variant="bordered"
-                  />
-                  <Input
-                    autoFocus
-                    label="เวลาลงบ่อนำ้หมัก"
-                    placeholder="กรอกเวลาที่ลงบ่อนำ้หมัก"
-                    variant="bordered"
-                  />
-                  <Input
-                    className="col-span-2"
-                    autoFocus
-                    label="หมายเหตุ"
-                    placeholder="กรอกหมายเหตุ"
-                    variant="bordered"
-                  />
-                </div>
-              </ModalBody>
-              <ModalFooter>
-                <Button color="danger" variant="flat" onPress={onClose}>
-                  Close
-                </Button>
-                <Button color="primary" onPress={onClose}>
-                  Save
-                </Button>
-              </ModalFooter>
-            </>
-          )}
-        </ModalContent>
-      </Modal>
-    </>
+    <Table
+      className={classNames}
+      aria-label="Example table with custom cells, pagination and sorting"
+      isHeaderSticky
+      bottomContent={bottomContent}
+      bottomContentPlacement="outside"
+      classNames={{
+        wrapper: "max-h-[382px]",
+      }}
+      selectedKeys={selectedKeys}
+      selectionMode="multiple"
+      sortDescriptor={sortDescriptor}
+      topContent={topContent}
+      topContentPlacement="outside"
+      onSelectionChange={setSelectedKeys}
+      onSortChange={setSortDescriptor}
+    >
+      <TableHeader columns={headerColumns}>
+        {(column) => (
+          <TableColumn
+            key={column.uid}
+            align={column.uid === "actions" ? "center" : "start"}
+            allowsSorting={column.sortable}
+          >
+            {column.name}
+          </TableColumn>
+        )}
+      </TableHeader>
+      <TableBody emptyContent={"No users found"} items={sortedItems}>
+        {(item) => (
+          <TableRow key={item.id}>
+            {(columnKey) => (
+              <TableCell>{renderCell(item, columnKey)}</TableCell>
+            )}
+          </TableRow>
+        )}
+      </TableBody>
+    </Table>
   );
 }
